@@ -3,11 +3,11 @@ import 'package:portfolio/src/presentation/widgets/custom_app_bar.dart';
 
 import '../../core/util.dart';
 import '../widgets/drawer.dart';
-import 'about_page.dart';
-import 'contact_page.dart';
-import 'home_page.dart';
-import 'project_page.dart';
-import 'skills_page.dart';
+import '02_about/about_page.dart';
+import '05_contact/contact_page.dart';
+import '01_home/home_page.dart';
+import '04_projects/project_page.dart';
+import '03_skills/skills_page.dart';
 
 class MainPage extends StatelessWidget {
   static const String name = "/";
