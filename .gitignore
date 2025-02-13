@@ -1,3 +1,7 @@
+# Archivos de ambiente y secretos
+lib/src/config/secrets/api_key.env
+*.env
+
 ### Flutter Generated
 
 # Miscellaneous

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/generated/l10n.dart';
 
+import '../../core/util.dart';
 import 'home_page_actions.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -17,13 +19,27 @@ class MyDrawer extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(
+          icon: Icon(
             Icons.close,
-            color: Color(0xFF4756DF),
+            color: Utils.colorScheme(context).primary,
           ),
         ),
       ),
-      body: Center(child: HomePageActions(onNavigate: onNavigate)),
+      body: Center(
+          child: HomePageActions(
+        onNavigate: onNavigate,
+        leading: TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+            onNavigate(Utils.homeKey, true);
+          },
+          style: ButtonStyle(
+            overlayColor: WidgetStateProperty.all(Colors.transparent),
+          ),
+          child: Text(S.of(context).appbar_home,
+              style: Utils.textStyle(context).titleMedium),
+        ),
+      )),
     );
   }
 }

@@ -36,8 +36,19 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
-  shared_preferences: ^2.3.3
+  shared_preferences: ^2.5.1
+  video_player: ^2.5.1
   riverpod: ^2.6.1
+  video_player_web: ^2.3.3
+  flutter_svg: ^2.0.17
+  url_launcher: ^6.3.1
+  emailjs: ^4.0.0
+  provider: ^6.1.2
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+  google_fonts: ^6.2.1
+  envied: ^1.1.1
 
 dev_dependencies:
   flutter_test:
@@ -49,10 +60,11 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  envied_generator: ^1.1.1
+  build_runner: ^2.4.15
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter packages.
 flutter:
 
@@ -63,13 +75,23 @@ flutter:
 
   assets:
     - assets/images/
-
+    - assets/images/profile_picture.jpg
+    - assets/images/placeholder.jpg
+    - assets/videos/home_background.mp4
+    - assets/videos/404.mp4
+    - assets/icons/instagram.svg
+    - assets/icons/linkedin.svg
+    - assets/icons/twitter.svg
+    - assets/icons/github.svg
+    - assets/icons/arg_flag.svg
+    - assets/icons/us_flag.svg
+    - assets/documents/mateo_manolio_cv.pdf
+    - assets/documents/mateo_manolio_cv_es.pdf
+    - assets/documents/mateo_manolio_cv_en.pdf
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/to/asset-from-package
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
@@ -86,3 +108,29 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+  fonts:
+    - family: AvenirNext
+      fonts:
+        - asset: assets/fonts/avenir_next/AvenirNext-Regular.otf
+        - asset: assets/fonts/avenir_next/AvenirNext-Bold.otf
+          weight: 700
+        - asset: assets/fonts/avenir_next/AvenirNext-MediumCn.otf
+          weight: 500
+        - asset: assets/fonts/avenir_next/AvenirNext-It.otf
+          style: italic
+        - asset: assets/fonts/avenir_next/AvenirNext-Demi.otf
+          weight: 600
+        - asset: assets/fonts/avenir_next/AvenirNext-HeavyCn.otf
+          weight: 800
+        - asset: assets/fonts/avenir_next/AvenirNext-BoldCn.otf
+          weight: 700
+        - asset: assets/fonts/avenir_next/AvenirNext-UltLtCn.otf
+          weight: 200
+        - asset: assets/fonts/avenir_next/AvenirNext-DemiCn.otf
+          weight: 600
+
+
+flutter_intl:
+  enabled: true
+  class_name: S
+  main_locale: en

@@ -1,10 +1,8 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+
+import '../config/theme/app_theme.dart';
 
 class Utils {
-  static bool isMobile(BuildContext context) {
-    return MediaQuery.of(context).size.width <= 600;
-  }
-
   static double mediaHeight(BuildContext context) {
     return MediaQuery.of(context).size.height;
   }
@@ -13,9 +11,86 @@ class Utils {
     return MediaQuery.of(context).size.width;
   }
 
-  static final GlobalKey homeKey = GlobalKey();
-  static final GlobalKey skillsKey = GlobalKey();
-  static final GlobalKey aboutKey = GlobalKey();
-  static final GlobalKey projectsKey = GlobalKey();
-  static final GlobalKey contactKey = GlobalKey();
+  static GlobalKey homeKey = GlobalKey();
+  static GlobalKey skillsKey = GlobalKey();
+  static GlobalKey aboutKey = GlobalKey();
+  static GlobalKey projectsKey = GlobalKey();
+  static GlobalKey contactKey = GlobalKey();
+
+  static void resetKeys() {
+    homeKey = GlobalKey();
+    skillsKey = GlobalKey();
+    aboutKey = GlobalKey();
+    projectsKey = GlobalKey();
+    contactKey = GlobalKey();
+  }
+
+  static int calculateCrossAxisCount(
+      {double? screenWidth, BuildContext? context}) {
+    if (context != null) {
+      screenWidth = mediaWidth(context);
+    }
+    if (screenWidth == null) {
+      throw ArgumentError(
+          "Either 'screenWidth' or 'context' must be provided.");
+    }
+
+    if (screenWidth > 1200) return 3; // Desktop
+    if (screenWidth > 800) return 2; // Tablet
+    return 1; // Mobile
+  }
+
+  static int movingTextDelay(BuildContext context) {
+    if (isMobile(context: context)) return 2500;
+    if (isTablet(context: context)) return 1800;
+    return 2000;
+  }
+
+  static bool isMobile({double? screenWidth, BuildContext? context}) {
+    if (context != null) {
+      screenWidth = mediaWidth(context);
+    }
+    if (screenWidth == null) {
+      throw ArgumentError(
+          "Either 'screenWidth' or 'context' must be provided.");
+    }
+
+    if (screenWidth < 800) return true;
+    return false;
+  }
+
+  static bool isTablet({double? screenWidth, BuildContext? context}) {
+    if (context != null) {
+      screenWidth = mediaWidth(context);
+    }
+    if (screenWidth == null) {
+      throw ArgumentError(
+          "Either 'screenWidth' or 'context' must be provided.");
+    }
+
+    if (screenWidth > 800 && screenWidth < 1200) return true;
+    return false;
+  }
+
+  static bool isDesktop({double? screenWidth, BuildContext? context}) {
+    if (context != null) {
+      screenWidth = mediaWidth(context);
+    }
+    if (screenWidth == null) {
+      throw ArgumentError(
+          "Either 'screenWidth' or 'context' must be provided.");
+    }
+
+    if (screenWidth > 1200) return true;
+    return false;
+  }
+
+  static TextTheme textStyle(BuildContext context) =>
+      Theme.of(context).textTheme;
+
+  static ColorScheme colorScheme(BuildContext context) =>
+      Theme.of(context).colorScheme;
+
+  static TextStyle movingTextStyle(BuildContext context) =>
+      AppTheme.movingTextStyle(Theme.of(context).brightness);
 }
