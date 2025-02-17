@@ -59,7 +59,7 @@ class _SocialButtonState extends State<SocialButton> {
                 width: 40,
                 height: 40,
               ),
-              const SizedBox(width: 15),
+              const Separator(width: 15),
               Expanded(
                 child: Text(
                   label,

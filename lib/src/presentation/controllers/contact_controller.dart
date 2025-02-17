@@ -14,6 +14,7 @@ class ContactController {
     'Twitter': 'https://x.com/MateManolio',
     'LinkedIn': 'https://www.linkedin.com/in/mateo-manolio-b79927252/',
     'GitHub': 'https://github.com/MateoManolio',
+    'Medium': 'https://medium.com/@manoliomateo',
   };
 
   ContactController({required this.useCase});
