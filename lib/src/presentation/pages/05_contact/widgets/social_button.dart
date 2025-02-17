@@ -79,13 +79,7 @@ class _SocialButtonState extends State<SocialButton> {
     final Uri parsedUrl = Uri.parse(url);
 
     try {
-      if (await widget.controller.canLaunchUrl(parsedUrl)) {
-        await widget.controller.launchSelectedUrl(parsedUrl);
-      } else if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('No se pudo abrir $url')),
-        );
-      }
+      await widget.controller.launchSelectedUrl(parsedUrl);
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
