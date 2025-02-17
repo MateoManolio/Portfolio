@@ -18,10 +18,10 @@ enum Language {
   String getFlagAsset() {
     switch (this) {
       case Language.es:
-        return 'icons/arg_flag.svg';
+        return 'assets/icons/arg_flag.svg';
       case Language.en:
       default:
-        return 'icons/us_flag.svg';
+        return 'assets/icons/us_flag.svg';
     }
   }
 

@@ -13,7 +13,8 @@ class CVRepository implements ICVRepository {
     try {
       final Language selectedLang = Language.fromString(language);
       final String fileSuffix = _getFileSuffix(selectedLang);
-      final String assetPath = 'documents/mateo_manolio_cv$fileSuffix.pdf';
+      final String assetPath =
+          'assets/documents/mateo_manolio_cv$fileSuffix.pdf';
 
       final ByteData data = await rootBundle.load(assetPath);
       final Uint8List bytes = data.buffer.asUint8List();
