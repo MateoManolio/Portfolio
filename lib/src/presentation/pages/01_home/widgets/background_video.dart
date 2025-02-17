@@ -42,6 +42,7 @@ class _BackgroundVideoState extends State<BackgroundVideo> {
       height: widget.height,
       child: FittedBox(
         fit: BoxFit.cover,
+        clipBehavior: Clip.hardEdge,
         child: SizedBox(
           width: _controller.value.size.width,
           height: _controller.value.size.height,
