@@ -1,5 +1,5 @@
 name: portfolio
-description: "A new Flutter project."
+description: "My portfolio website"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -77,6 +77,16 @@ flutter:
     - assets/images/
     - assets/images/profile_picture.jpg
     - assets/images/placeholder.jpg
+    - assets/images/myself_portrait_1.jpg
+    - assets/images/myself_portrait_2.jpg
+    - assets/images/blazor_app.png
+    - assets/images/keep_n_remind.png
+    - assets/images/movie_card.png
+    - assets/images/my_social_red.png
+    - assets/images/salud_agile.png
+    - assets/images/trading_bot.png
+    - assets/images/turno_facil.png
+
     - assets/videos/home_background.mp4
     - assets/videos/404.mp4
     - assets/icons/instagram.svg

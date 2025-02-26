@@ -57,8 +57,14 @@ class _CustomAppBarState extends State<CustomAppBar> {
           style: ButtonStyle(
             overlayColor: WidgetStateProperty.all(Colors.transparent),
           ),
-          child: Text(S.of(context).name,
-              style: Utils.textStyle(context).titleMedium),
+          child: Text(
+            S.of(context).name,
+            style: Utils.textStyle(context).titleMedium,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+            softWrap: false,
+            textAlign: TextAlign.center,
+          ),
         ),
       ),
       elevation: 2,

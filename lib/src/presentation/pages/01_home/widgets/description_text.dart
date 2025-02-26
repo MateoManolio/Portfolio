@@ -12,6 +12,7 @@ class DescriptionText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(S.of(context).home_description,
-        style: Utils.textStyle(context).bodyLarge);
+        style: Utils.textStyle(context).bodyLarge,
+        textAlign: Utils.isMobile(context: context) ? TextAlign.center : null);
   }
 }

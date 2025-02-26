@@ -92,7 +92,7 @@ class ContactPage extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(8),
       child: Image.asset(
-        'assets/images/profile_picture.jpg',
+        'assets/images/myself_portrait_2.jpg',
         fit: BoxFit.cover,
       ),
     );

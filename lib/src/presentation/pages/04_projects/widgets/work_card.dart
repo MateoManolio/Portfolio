@@ -51,7 +51,6 @@ class WorkCard extends StatelessWidget {
                       : Utils.textStyle(context)
                           .bodyLarge
                           ?.copyWith(fontWeight: FontWeight.bold),
-                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
                 const Separator(height: 4),
@@ -60,7 +59,7 @@ class WorkCard extends StatelessWidget {
                   style: isSmallScreen
                       ? Utils.textStyle(context).bodySmall
                       : Utils.textStyle(context).bodyMedium,
-                  maxLines: 3,
+                  maxLines: 7,
                   overflow: TextOverflow.ellipsis,
                 ),
               ],

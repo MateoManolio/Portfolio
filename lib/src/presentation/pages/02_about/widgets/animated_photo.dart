@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import '../../../../core/util.dart';
 import 'image_clipper.dart';
 
 class AnimatedPhoto extends StatefulWidget implements PreferredSizeWidget {
@@ -53,7 +54,12 @@ class _AnimatedPhotoState extends State<AnimatedPhoto>
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
+    final isMobile = Utils.isMobile(context: context);
+    final imageSize =
+        isMobile ? widget.screenWidth * 0.8 : widget.screenWidth * 0.35;
+
+    return SizedBox(
+      height: isMobile ? imageSize : null,
       child: AnimatedBuilder(
         animation: animationController,
         builder: (BuildContext context, Widget? child) => Center(
@@ -62,8 +68,8 @@ class _AnimatedPhotoState extends State<AnimatedPhoto>
             child: Image.asset(
               'assets/images/profile_picture.jpg',
               fit: BoxFit.cover,
-              width: widget.screenWidth * 0.35,
-              height: widget.screenWidth * 0.35,
+              width: imageSize,
+              height: imageSize,
             ),
           ),
         ),

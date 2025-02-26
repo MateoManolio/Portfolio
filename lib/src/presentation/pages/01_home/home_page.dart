@@ -24,6 +24,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = Utils.isMobile(context: context);
     return Stack(
       children: [
         BackgroundVideo(height: HomePage._maxHeight),
@@ -39,6 +40,7 @@ class HomePage extends StatelessWidget {
                 Text(
                   S.of(context).home_introduction,
                   style: Utils.textStyle(context).displaySmall,
+                  textAlign: isMobile ? TextAlign.center : TextAlign.start,
                 ),
                 Text(
                   S.of(context).name,
@@ -49,37 +51,72 @@ class HomePage extends StatelessWidget {
                 const Separator(height: 16),
                 const DescriptionText(),
                 const Separator(height: 32),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: 24,
-                  children: [
-                    CustomButton(
-                      onPressed: contactCallback,
-                      text: S.of(context).home_contact_button,
-                    ),
-                    CustomButton(
-                      onPressed: () async {
-                        final locale = Localizations.localeOf(context);
-                        final languageCode = locale.languageCode;
-                        final result =
-                            await homeController.downloadCV(languageCode);
+                if (isMobile)
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    spacing: 24,
+                    children: [
+                      CustomButton(
+                        onPressed: contactCallback,
+                        text: S.of(context).home_contact_button,
+                      ),
+                      CustomButton(
+                        onPressed: () async {
+                          final locale = Localizations.localeOf(context);
+                          final languageCode = locale.languageCode;
+                          final result =
+                              await homeController.downloadCV(languageCode);
 
-                        if (result == false && context.mounted) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                S.of(context).home_error_cv_download,
-                                style: Utils.textStyle(context).titleSmall,
+                          if (result == false && context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  S.of(context).home_error_cv_download,
+                                  style: Utils.textStyle(context).titleSmall,
+                                ),
+                                backgroundColor:
+                                    Utils.colorScheme(context).error,
                               ),
-                              backgroundColor: Utils.colorScheme(context).error,
-                            ),
-                          );
-                        }
-                      },
-                      text: S.of(context).home_cv_button,
-                    ),
-                  ],
-                ),
+                            );
+                          }
+                        },
+                        text: S.of(context).home_cv_button,
+                      ),
+                    ],
+                  )
+                else
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    spacing: 24,
+                    children: [
+                      CustomButton(
+                        onPressed: contactCallback,
+                        text: S.of(context).home_contact_button,
+                      ),
+                      CustomButton(
+                        onPressed: () async {
+                          final locale = Localizations.localeOf(context);
+                          final languageCode = locale.languageCode;
+                          final result =
+                              await homeController.downloadCV(languageCode);
+
+                          if (result == false && context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  S.of(context).home_error_cv_download,
+                                  style: Utils.textStyle(context).titleSmall,
+                                ),
+                                backgroundColor:
+                                    Utils.colorScheme(context).error,
+                              ),
+                            );
+                          }
+                        },
+                        text: S.of(context).home_cv_button,
+                      ),
+                    ],
+                  ),
               ],
             ),
           ),

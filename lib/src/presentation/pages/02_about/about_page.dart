@@ -15,12 +15,12 @@ class AboutPage extends StatelessWidget {
     final screenWidth = Utils.mediaWidth(context);
     return Padding(
       padding: const EdgeInsets.all(50),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
+      child: Utils.isMobile(context: context)
+          ? Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                AnimatedPhoto(screenWidth: screenWidth),
+                Separator(width: 16),
                 Text(S.of(context).about_title,
                     style: Utils.textStyle(context).displayLarge),
                 Separator(height: 8),
@@ -34,12 +34,32 @@ class AboutPage extends StatelessWidget {
                 Separator(height: 8),
                 ...bulletList(context),
               ],
+            )
+          : Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(S.of(context).about_title,
+                          style: Utils.textStyle(context).displayLarge),
+                      Separator(height: 8),
+                      Text(
+                        S.of(context).about_description,
+                        style: Utils.textStyle(context).bodyLarge,
+                      ),
+                      Separator(height: 16),
+                      Text(S.of(context).about_mentions_title,
+                          style: Utils.textStyle(context).displayMedium),
+                      Separator(height: 8),
+                      ...bulletList(context),
+                    ],
+                  ),
+                ),
+                Separator(width: 16),
+                AnimatedPhoto(screenWidth: screenWidth),
+              ],
             ),
-          ),
-          Separator(width: 16),
-          AnimatedPhoto(screenWidth: screenWidth),
-        ],
-      ),
     );
   }
 
