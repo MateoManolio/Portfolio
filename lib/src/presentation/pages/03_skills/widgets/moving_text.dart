@@ -7,17 +7,22 @@ class MovingText extends StatefulWidget {
   final double speed;
   final double spacing;
   final double width;
-
+  final double widgetWidth;
+  final double leftBorder;
   final TextStyle? textStyle;
+  final Duration? repeatDuration;
 
   MovingText({
     required this.text,
     required this.width,
+    required this.widgetWidth,
     this.initialDelay = const Duration(seconds: 0),
     this.scrollDirection = TextDirection.ltr,
     this.speed = 1.0,
     this.spacing = 1.0,
     this.textStyle,
+    this.repeatDuration,
+    this.leftBorder = 0,
   }) : super(key: ValueKey('${width.hashCode}_${UniqueKey()}'));
 
   @override
@@ -39,32 +44,32 @@ class _MovingTextState extends State<MovingText>
       duration: Duration(seconds: (10 / widget.speed).round()),
     );
 
-    _leftBorder = -(widget.text.length + 200).toDouble();
+    _leftBorder = -(widget.text.length + widget.leftBorder);
     _rightBorder = widget.width + widget.spacing * widget.text.length;
 
-    if (widget.scrollDirection == TextDirection.ltr) {
-      animation = Tween<double>(
-        begin: _leftBorder,
-        end: _rightBorder,
-      ).animate(animationController);
-    } else {
-      animation = Tween<double>(
-        begin: _rightBorder,
-        end: _leftBorder,
-      ).animate(animationController);
-    }
+    animation = Tween<double>(
+      begin: widget.scrollDirection == TextDirection.ltr
+          ? _leftBorder
+          : _rightBorder,
+      end: widget.scrollDirection == TextDirection.ltr
+          ? _rightBorder
+          : _leftBorder,
+    ).animate(animationController);
 
     animationController.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        animationController.reset();
-        animationController.forward();
+      if (status == AnimationStatus.completed && mounted) {
+        Future.delayed(widget.repeatDuration ?? Duration.zero, () {
+          if (mounted) {
+            animationController
+              ..reset()
+              ..forward();
+          }
+        });
       }
     });
 
     Future.delayed(widget.initialDelay, () {
-      if (mounted) {
-        animationController.forward();
-      }
+      if (mounted) animationController.forward();
     });
   }
 
@@ -76,22 +81,22 @@ class _MovingTextState extends State<MovingText>
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: AnimatedBuilder(
-        animation: animation,
-        builder: (context, child) {
-          return Transform.translate(
-            offset: Offset(animation.value, 0),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: widget.spacing),
+    return AnimatedBuilder(
+      animation: animation,
+      builder: (_, __) => Transform.translate(
+        offset: Offset(animation.value, 0),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: widget.spacing),
+          child: SizedBox(
+            width: widget.widgetWidth,
+            child: Center(
               child: Text(
                 widget.text,
                 style: widget.textStyle,
               ),
             ),
-          );
-        },
+          ),
+        ),
       ),
     );
   }

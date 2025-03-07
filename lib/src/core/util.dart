@@ -40,12 +40,6 @@ class Utils {
     return 1; // Mobile
   }
 
-  static int movingTextDelay(BuildContext context) {
-    if (isMobile(context: context)) return 2500;
-    if (isTablet(context: context)) return 1800;
-    return 2000;
-  }
-
   static bool isMobile({double? screenWidth, BuildContext? context}) {
     if (context != null) {
       screenWidth = mediaWidth(context);

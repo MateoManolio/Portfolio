@@ -47,6 +47,7 @@ class HomePage extends StatelessWidget {
                   style: Utils.textStyle(context)
                       .displayLarge
                       ?.copyWith(fontSize: 60),
+                  textAlign: isMobile ? TextAlign.center : TextAlign.start,
                 ),
                 const Separator(height: 16),
                 const DescriptionText(),

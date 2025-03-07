@@ -300,9 +300,9 @@ class S {
     return Intl.message('C#', name: 'skills_hard4', desc: '', args: []);
   }
 
-  /// `MEAN Stack`
+  /// `MEAN`
   String get skills_hard5 {
-    return Intl.message('MEAN Stack', name: 'skills_hard5', desc: '', args: []);
+    return Intl.message('MEAN', name: 'skills_hard5', desc: '', args: []);
   }
 
   /// `Flutter`
@@ -315,14 +315,9 @@ class S {
     return Intl.message('.NET', name: 'skills_hard7', desc: '', args: []);
   }
 
-  /// `Microsoft Azure`
+  /// `Azure`
   String get skills_hard8 {
-    return Intl.message(
-      'Microsoft Azure',
-      name: 'skills_hard8',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Azure', name: 'skills_hard8', desc: '', args: []);
   }
 
   /// `Docker`
@@ -345,44 +340,29 @@ class S {
     );
   }
 
-  /// `Agile Development`
+  /// `Agile`
   String get skills_hard12 {
-    return Intl.message(
-      'Agile Development',
-      name: 'skills_hard12',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Agile', name: 'skills_hard12', desc: '', args: []);
   }
 
-  /// `Algorithm Analysis and Design`
+  /// `Algorithms`
   String get skills_hard13 {
     return Intl.message(
-      'Algorithm Analysis and Design',
+      'Algorithms',
       name: 'skills_hard13',
       desc: '',
       args: [],
     );
   }
 
-  /// `Object-Oriented Programming`
+  /// `OOP`
   String get skills_hard14 {
-    return Intl.message(
-      'Object-Oriented Programming',
-      name: 'skills_hard14',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('OOP', name: 'skills_hard14', desc: '', args: []);
   }
 
-  /// `SOLID, KISS, YAGNI Principles`
+  /// `SOLID`
   String get skills_hard15 {
-    return Intl.message(
-      'SOLID, KISS, YAGNI Principles',
-      name: 'skills_hard15',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('SOLID', name: 'skills_hard15', desc: '', args: []);
   }
 
   /// `Angular`

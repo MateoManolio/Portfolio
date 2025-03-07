@@ -100,7 +100,7 @@ abstract class AppTheme {
           borderRadius: BorderRadius.circular(8),
         ),
       ),
-      tabBarTheme: TabBarTheme(
+      tabBarTheme: TabBarThemeData(
         labelColor: _primaryLight,
         unselectedLabelColor: Colors.grey,
       ),
@@ -182,7 +182,7 @@ abstract class AppTheme {
           borderRadius: BorderRadius.circular(8),
         ),
       ),
-      tabBarTheme: TabBarTheme(
+      tabBarTheme: TabBarThemeData(
         labelColor: _secondaryDark,
         unselectedLabelColor: Colors.grey,
       ),
